@@ -4,7 +4,7 @@ import Link from 'next/link'
 export default function Home() {
   return (
     <main className="flex flex-col items-center justify-between p-24">
-      <Link href='/dashboard'>
+      <Link href='/dashboard/URLtest'>
         <Image
           className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
           src="/next.svg"
