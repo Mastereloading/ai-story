@@ -1,4 +1,7 @@
 import Link from 'next/link'
+import { Repos } from '@/components/Repos'
+
+export const revalidate = 60 // revalidate page
 
 interface Details {
     params: {
@@ -17,6 +20,7 @@ export default function Dashboard({params} : Details) {
                     Return
                 </div>        
             </Link>
+            <Repos />
         </div>
     )
 }
