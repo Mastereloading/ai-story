@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Repos } from '@/components/Repos'
 
 export const revalidate = 60 // revalidate page
 
@@ -9,14 +10,7 @@ interface Details {
     }
 }
 
-export default async function Dashboard({params} : Details) {
-    console.log('test')
-    const response = await fetch('https://api.github.com/users/Mastereloading', {
-        next: {
-            revalidate: 30 // revalidate request (fetch)
-        }
-    })
-    const user = await response.json()
+export default function Dashboard({params} : Details) {
     return (
         <div>
             <h1>Dashboard</h1>
@@ -26,9 +20,7 @@ export default async function Dashboard({params} : Details) {
                     Return
                 </div>        
             </Link>
-            <p>
-                { JSON.stringify(user, null, 2) }
-            </p>
+            <Repos />
         </div>
     )
 }
