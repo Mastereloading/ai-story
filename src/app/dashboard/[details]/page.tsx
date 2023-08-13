@@ -1,5 +1,7 @@
 import Link from 'next/link'
 
+export const revalidate = 60 // revalidate page
+
 interface Details {
     params: {
         details: string,
@@ -7,7 +9,14 @@ interface Details {
     }
 }
 
-export default function Dashboard({params} : Details) {
+export default async function Dashboard({params} : Details) {
+    console.log('test')
+    const response = await fetch('https://api.github.com/users/Mastereloading', {
+        next: {
+            revalidate: 30 // revalidate request (fetch)
+        }
+    })
+    const user = await response.json()
     return (
         <div>
             <h1>Dashboard</h1>
@@ -17,6 +26,9 @@ export default function Dashboard({params} : Details) {
                     Return
                 </div>        
             </Link>
+            <p>
+                { JSON.stringify(user, null, 2) }
+            </p>
         </div>
     )
 }
